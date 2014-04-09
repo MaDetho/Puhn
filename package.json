@@ -2,7 +2,7 @@
 	"main": "html/signin.html",
 	"name": "Puhn",
 	"description": "Instant messaging",
-	"version": "1.0",
+	"version": "0.0.1",
 	"window": {
 		"title": "Puhn",
 		"icon": "img/icon.png",
