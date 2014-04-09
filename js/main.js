@@ -88,3 +88,5 @@ $('#forgotPassword').click(function() {
 $('#signUpButton').click(function() {
     gui.Shell.openExternal('http://puhn.net/signup/');
 });
+
+//test
