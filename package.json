@@ -1,0 +1,19 @@
+{
+	"main": "html/signin.html",
+	"name": "Puhn",
+	"description": "Instant messaging",
+	"version": "1.0",
+	"window": {
+		"title": "Puhn",
+		"icon": "img/icon.png",
+		"toolbar": false,
+		"frame": true,
+		"width": 800,
+		"height": 460,
+		"min_width": 800,
+		"min_height": 460,
+        "max_width": 800,
+		"max_height": 460,
+        "position": "center"
+	  }
+}
