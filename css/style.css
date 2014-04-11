@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("../css/font-awesome.min.css");
 @import url("../css/main.css");
 
@@ -129,7 +129,7 @@ input[type=checkbox]:checked + label:before {
 
 .checkbox label:hover:before {
     background: #f7f7f7;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 }
 
 .checkbox label:active:before {
