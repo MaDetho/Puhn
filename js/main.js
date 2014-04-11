@@ -40,7 +40,7 @@ menubar.append(new gui.MenuItem({label:'Help',submenu:help}));
 menubar.items[0].submenu.append(new gui.MenuItem({
     label: 'Show Dev Tools',
     click: function() {
-        gui.Window.get().showDevTools();
+        win.showDevTools();
     }
 }));
 win.menu = menubar;
@@ -48,16 +48,16 @@ win.menu = menubar;
 //////////////////////////////////////////////////////////////////////////////////////
 // Window bar
 $('.windowBar .close').click(function() {
-    gui.Window.get().close();
+    win.close();
 });
 $('.windowBar .minimize').click(function() {
-    gui.Window.get().minimize();
+    win.minimize();
 });
 $('.windowBar .maximize').click(function() {
-    gui.Window.get().maximize();
+    win.maximize();
 });
 $('.windowBar .expand, .windowBar .compress').click(function() {
-    gui.Window.get().toggleFullscreen();
+    win.toggleFullscreen();
     $(this).toggleClass("expand").toggleClass("compress");
 });
 
