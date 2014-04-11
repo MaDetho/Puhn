@@ -46,6 +46,22 @@ menubar.items[0].submenu.append(new gui.MenuItem({
 win.menu = menubar;
 
 //////////////////////////////////////////////////////////////////////////////////////
+// Window bar
+$('.windowBar .close').click(function() {
+    gui.Window.get().close();
+});
+$('.windowBar .minimize').click(function() {
+    gui.Window.get().minimize();
+});
+$('.windowBar .maximize').click(function() {
+    gui.Window.get().maximize();
+});
+$('.windowBar .expand, .windowBar .compress').click(function() {
+    gui.Window.get().toggleFullscreen();
+    $(this).toggleClass("expand").toggleClass("compress");
+});
+
+//////////////////////////////////////////////////////////////////////////////////////
 // Sign in
 $('#signInForm').submit(function() {
     event.preventDefault();
@@ -56,27 +72,16 @@ $('#signInForm').submit(function() {
     localStorage.setItem('signInUsername', usernameVal);
     localStorage.setItem('signInPassword', passwordVal);
     
-    // Hide the form and show loading
-    $('#signIn').hide();
-    $('#signInLoading').fadeIn(300);
-    
-    // Open the application window, hide it and maximize it
+    // Close sign in window, open the application window and maximize it
+    win.close();
     var winApplication = gui.Window.open('application.html', {
-        title: 'Puhn',
         toolbar: false,
-        frame: true,
+        frame: false,
         min_width: 800,
         min_height: 460,
         position: 'center'
     });
-    winApplication.hide();
     winApplication.maximize();
-    
-    // Wait for 2 seconds then close sign in window and open application
-    setTimeout(function() {
-        win.close();
-        winApplication.show();
-    }, 2000);
 });
 
 // Open recover page in default browser

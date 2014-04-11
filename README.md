@@ -1,4 +1,3 @@
-puhn
+Puhn
 ====
-
-Awesome Chat Application
+Free instant messaging

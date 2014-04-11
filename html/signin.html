@@ -1,34 +1,43 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Puhn</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
 <body>
     
-    <div id="signIn">
-        <h2>Puhn</h2>
-        <form id="signInForm">
-            <input id="signInUsername" type="text" class="big" placeholder="Username" required>
-            <input id="signInPassword" type="password" class="big" placeholder="Password" required>
-            <small><a href="#" id="forgotPassword">Forgot your password?</a></small>
-            <button id="signInButton" class="big">Sign in</button>
-        </form>
-        <div class="signup">
-            <button id="signUpButton">Create an account</button>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Window bar -->
+    <div class="windowBar">
+        <div class="title">Puhn</div>
+        <div class="actions">
+            <i class="close"></i>
+            <i class="minimize"></i>
+            <i class="maximize"></i>
         </div>
-        <div class="checkbox">
-            <input type="checkbox" id="autoSignIn">
-            <label for="autoSignIn">Sign in when Puhn starts</label>
+        <div class="fullscreen">
+            <i class="expand"></i>
         </div>
     </div>
     
-    <div id="signInLoading">
-        <img src="../img/loading.gif">
-        <small>Signing in...</small>
+    <!-- Window content -->
+    <div class="windowContent">
+        <div id="signIn">
+            <form id="signInForm">
+                <input id="signInUsername" type="text" class="big" placeholder="Username" required>
+                <input id="signInPassword" type="password" class="big" placeholder="Password" required>
+                <button id="signInButton" class="big blue wide">Sign in</button>
+                <small><a href="#" id="forgotPassword">Forgot your password?</a></small>
+            </form>
+            <div class="signup">
+                <button id="signUpButton">Create an account</button>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="autoSignIn">
+                <label for="autoSignIn">Sign in when Puhn starts</label>
+            </div>
+        </div>
     </div>
-
-	<script src="../js/jquery.min.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../js/jquery.min.js"></script>
 	<script src="../js/main.js"></script>
     
 </body>

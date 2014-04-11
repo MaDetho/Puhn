@@ -1,19 +1,18 @@
 {
-	"main": "html/signin.html",
-	"name": "Puhn",
-	"description": "Instant messaging",
-	"version": "0.0.1",
-	"window": {
-		"title": "Puhn",
-		"icon": "img/icon.png",
-		"toolbar": false,
-		"frame": true,
-		"width": 800,
-		"height": 460,
-		"min_width": 800,
-		"min_height": 460,
+    "main": "html/signin.html",
+    "name": "Puhn",
+    "description": "Free instant messaging",
+    "version": "0.0.1",
+    "window": {
+        "icon": "img/icon.png",
+        "toolbar": false,
+        "frame": false,
+        "width": 800,
+        "height": 460,
+        "min_width": 800,
+        "min_height": 460,
         "max_width": 800,
-		"max_height": 460,
+        "max_height": 460,
         "position": "center"
-	  }
+    }
 }
