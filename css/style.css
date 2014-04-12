@@ -12,26 +12,26 @@ html, body {
 body {
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #202224;
     font-family: Open Sans, Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     color: #666;
-    position: absolute;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Open Sans, Arial, sans-serif;
-    font-weight: 400;
     color: #333;
 }
 
-h1 { font-size: 60px; line-height: 72px; margin: 0 0 20px 0; }
-h2 { font-size: 48px; line-height: 60px; margin: 0 0 20px 0; }
-h3 { font-size: 36px; line-height: 48px; margin: 0 0 20px 0; }
-h4 { font-size: 24px; line-height: 36px; margin: 0 0 10px 0; }
-h5 { font-size: 18px; line-height: 24px; margin: 0 0 10px 0; }
-h6 { font-size: 14px; line-height: 18px; margin: 0 0 10px 0; }
+h1 { font-size: 60px; font-weight: 300; line-height: 60px; margin: 0 0 20px 0; }
+h2 { font-size: 48px; font-weight: 300; line-height: 48px; margin: 0 0 20px 0; }
+h3 { font-size: 36px; font-weight: 300; line-height: 36px; margin: 0 0 20px 0; }
+h4 { font-size: 24px; font-weight: 600; line-height: 24px; margin: 0 0 10px 0; }
+h5 { font-size: 18px; font-weight: 600; line-height: 18px; margin: 0 0 10px 0; }
+h6 { font-size: 14px; font-weight: 600; line-height: 14px; margin: 0 0 10px 0; }
 
 p       { margin: 0 0 20px 0; }
 em      { font-style: italic; }
@@ -46,18 +46,22 @@ hr {
     height: 0; }
 
 a, a:visited {
-    color: #3486f7;
+    color: #0077ff;
     text-decoration: none;
     outline: 0;
 }
 
 a:hover, a:focus {
-    color: #3486f7;
+    color: #0088ff;
     text-decoration: underline;
 }
 
 ::-webkit-input-placeholder {
     color: #aaa;
+}
+
+::selection {
+    background: #0077ff;
 }
 
 input[type="text"],
@@ -66,8 +70,7 @@ input[type="email"] {
     width: 200px;
     height: 30px;
     background: #fff; 
-    border: 1px solid #ccc ;
-    border-radius: 3px;
+    border: none;
     font-family: Open Sans, Arial, sans-serif;
     color: #333;
     font-size: 14px;
@@ -77,13 +80,6 @@ input[type="email"] {
     display: block;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus {
-    border: 1px solid #4285f4;
-    transition: border 500ms linear;
-}
-
 input[type="text"].big,
 input[type="password"].big,
 input[type="email"].big {
@@ -91,7 +87,31 @@ input[type="email"].big {
     height: 40px;
     font-size: 14px;
     padding: 0 15px;
-    border-radius: 3px;
+}
+
+.checkbox label {
+    color: #888;
+    font-size: 12px;
+    position: absolute;  
+    top: 0; left: 0;
+    padding-left: 24px;
+    -webkit-user-select: none;
+}
+
+.checkbox label:before {  
+    content: "";
+    width: 16px;  
+    height: 16px;
+    background: transparent;
+	border: 1px solid rgba(255,255,255,.4);
+    position: absolute;  
+    left: 0; bottom: 0;
+    display: inline-block;  
+}
+
+.checkbox label:hover:before {
+	border: 1px solid rgba(255,255,255,1);
+    transition: border 300ms linear;
 }
 
 input[type=checkbox] {  
@@ -102,65 +122,33 @@ input[type=checkbox]:checked + label:before {
     content: "\f00c";  
     font-family: FontAwesome;
     font-size: 10px;  
-    color: #333;  
+    color: #fff;  
     text-align: center;  
-    line-height: 16px;  
+    line-height: 17px;  
 }  
-
-.checkbox label {
-    font-size: 12px; 
-    position: relative;  
-    padding-left: 25px;
-    display: inline-block;
-    -webkit-user-select: none;
-}
-
-.checkbox label:before {  
-    content: "";
-    width: 16px;  
-    height: 16px;
-    background: #f5f5f5;
-	border: 1px solid #ccc;
-    border-radius: 2px;
-    position: absolute;  
-    left: 0; bottom: -2px;
-    display: inline-block;  
-}
-
-.checkbox label:hover:before {
-    background: #f7f7f7;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
-}
-
-.checkbox label:active:before {
-    background: #f5f5f5;
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,.05);
-}
 
 button {
     height: 30px;
-    background: #f5f5f5;
-	border: 1px solid #ccc;
-    border-radius: 3px;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.05);
+    background: transparent;
+	border: 1px solid rgba(255,255,255,.4);
     font-family: Open Sans, Arial, sans-serif;
-    color: #333;
+    color: #888;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     margin: 0;
     padding: 0 10px;
     outline: 0;
     display: inline-block;
+    transition: border 300ms linear, color 300ms linear, background 300ms linear;
 }
 
 button:hover:enabled {
-    background: #f7f7f7;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+    color: rgba(255,255,255,1);
+    border: 1px solid rgba(255,255,255,1);
 }
 
 button:active:enabled {
-    background: #f5f5f5;
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,.05);
+    border: 1px solid rgba(255,255,255,.4);
 }
 
 button:disabled {
@@ -168,19 +156,19 @@ button:disabled {
 }
 
 button.blue {
-    background: #4285f4;
-    border: 1px solid #346ac4;
+    background: #0077ff;
+    border: none;
     color: #fff;
 }
 
 button.blue:hover:enabled {
-    background: #468af9;
-    box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+    border: none;
+    background: #0088ff;
 }
 
 button.blue:active:enabled {
-    background: #4285f4;
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,.05);
+    border: none;
+    background: #0077ff;
 }
 
 button.big {
@@ -197,8 +185,8 @@ button.wide {
     -webkit-app-region: drag;
     width: 100%;
     height: 30px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ccc;
+    background: #2c2f31 ;
+    border-bottom: 1px solid #000;
     position: absolute;
     top: 0; left: 0;
 }
@@ -209,12 +197,12 @@ button.wide {
     text-align: center;
     font-size: 12px;
     line-height: 30px;
-    color: #333;
+    color: #fff;
 }
 
 .windowBar i {
     -webkit-app-region: no-drag;
-    width: 30px;
+    width: 50px;
     height: 30px;
     position: relative;
 }
@@ -225,22 +213,23 @@ button.wide {
     height: 10px;
     background: url("../img/icons.png");
     position: absolute;
-    top: 10px; left: 10px;
+    top: 10px; left: 20px;
+    opacity: .5;
+}
+
+.windowBar i:hover:before {
+    opacity: 1;
+    transition: opacity 300ms linear;
 }
 
 .windowBar i.close:before              { background-position: 0 0; }
-.windowBar i.close:hover:before        { background-position: 0 -10px; }
 .windowBar i.minimize:before           { background-position: -10px 0; }
-.windowBar i.minimize:hover:before     { background-position: -10px -10px; }
 .windowBar i.maximize:before           { background-position: -20px 0; }
-.windowBar i.maximize:hover:before     { background-position: -20px -10px; }
 .windowBar i.expand:before             { background-position: -30px 0; }
-.windowBar i.expand:hover:before       { background-position: -30px -10px; }
 .windowBar i.compress:before           { background-position: -40px 0; }
-.windowBar i.compress:hover:before     { background-position: -40px -10px; }
 
 .windowBar .actions {
-    width: 120px;
+    width: 150px;
     height: 100%;
     position: absolute;
     top: 0; left: 0;
@@ -248,7 +237,7 @@ button.wide {
 
 .windowBar .actions i {
     float: left;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #000;
 }
 
 .windowBar .fullscreen {
@@ -260,7 +249,7 @@ button.wide {
 
 .windowBar .fullscreen i {
     float: right;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #000;
 }
 
 .windowContent {

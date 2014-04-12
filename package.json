@@ -4,15 +4,15 @@
     "description": "Free instant messaging",
     "version": "0.0.1",
     "window": {
-        "icon": "img/icon.png",
+        "icon": "img/logo500.png",
         "toolbar": false,
         "frame": false,
-        "width": 800,
-        "height": 460,
-        "min_width": 800,
-        "min_height": 460,
-        "max_width": 800,
-        "max_height": 460,
+        "width": 360,
+        "height": 500,
+        "min_width": 360,
+        "min_height": 500,
+        "max_width": 360,
+        "max_height": 500,
         "position": "center"
     }
 }

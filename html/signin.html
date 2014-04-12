@@ -10,29 +10,27 @@
         <div class="actions">
             <i class="close"></i>
             <i class="minimize"></i>
-            <i class="maximize"></i>
-        </div>
-        <div class="fullscreen">
-            <i class="expand"></i>
         </div>
     </div>
     
     <!-- Window content -->
     <div class="windowContent">
         <div id="signIn">
+            <h1>Puhn</h1>
+            <h5>Free, instant messaging.</h5>
             <form id="signInForm">
                 <input id="signInUsername" type="text" class="big" placeholder="Username" required>
                 <input id="signInPassword" type="password" class="big" placeholder="Password" required>
                 <button id="signInButton" class="big blue wide">Sign in</button>
-                <small><a href="#" id="forgotPassword">Forgot your password?</a></small>
+                <div class="checkbox">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <small><a href="#" id="signInTrouble">Trouble signing in?</a></small>
             </form>
-            <div class="signup">
-                <button id="signUpButton">Create an account</button>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="autoSignIn">
-                <label for="autoSignIn">Sign in when Puhn starts</label>
-            </div>
+        </div>
+        <div id="signup">
+            <button id="signUpButton">Create an account</button>
         </div>
     </div>
     

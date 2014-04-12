@@ -9,30 +9,33 @@ var screenWidth         = window.screen.availWidth;
 var screenHeight        = window.screen.availHeight;
 
 //////////////////////////////////////////////////////////////////////////////////////
-// Auto sign in
+// Remember me
 
 // Get the localStorage items needed for sign in
-var autoSignInValue     = localStorage.getItem('autoSignIn');
+var rememberMeValue     = localStorage.getItem('rememberMe');
 var usernameVal         = localStorage.getItem('signInUsername');
 var passwordVal         = localStorage.getItem('signInPassword');
 
 // When the checkbox is ticked
-$('#autoSignIn').change(function(){
+$('#rememberMe').change(function(){
     if($(this).is(':checked')) {
-        localStorage.setItem('autoSignIn', 'true');
+        localStorage.setItem('rememberMe', 'true');
     } else {
-        localStorage.setItem('autoSignIn', 'false');
+        localStorage.setItem('rememberMe', 'false');
     }
 });
 
 // Tick the checkbox if localStorage is 'true'
-if(autoSignInValue == 'true') {
-    $('#autoSignIn').prop('checked', true);
+if(rememberMeValue == 'true') {
+    $('#rememberMe').prop('checked', true);
     $('#signInUsername').val(usernameVal);
     $('#signInPassword').val(passwordVal);
+} else if(rememberMeValue == null) {
+    $('#signInUsername').focus();
 } else {
     $('#signInUsername').val(usernameVal);
-    $('#autoSignIn').prop('checked', false);
+    $('#rememberMe').prop('checked', false);
+    $('#signInPassword').focus();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -76,19 +79,19 @@ $('#signInForm').submit(function() {
     
     // Close sign in window, open the application window and maximize it
     win.close();
-    var winApplication = gui.Window.open('application.html', {
+    gui.Window.open('application.html', {
         toolbar: false,
         frame: false,
         width: screenWidth,
         height: screenHeight,
-        min_width: 800,
+        min_width: 600,
         min_height: 460,
         position: 'center'
     });
 });
 
 // Open recover page in default browser
-$('#forgotPassword').click(function() {
+$('#signInTrouble').click(function() {
     gui.Shell.openExternal('http://puhn.net/recover/');
 });
 
