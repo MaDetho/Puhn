@@ -5,8 +5,8 @@ var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
 var win                 = gui.Window.get();
-var maxheight           = window.screen.availHeight;
-var maxwidth            = window.screen.availWidth;
+var screenWidth         = window.screen.availWidth;
+var screenHeight        = window.screen.availHeight;
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Auto sign in
@@ -79,11 +79,12 @@ $('#signInForm').submit(function() {
     var winApplication = gui.Window.open('application.html', {
         toolbar: false,
         frame: false,
+        width: screenWidth,
+        height: screenHeight,
         min_width: 800,
         min_height: 460,
         position: 'center'
     });
-    winApplication.maximize();
 });
 
 // Open recover page in default browser
