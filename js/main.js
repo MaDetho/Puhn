@@ -5,6 +5,8 @@ var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
 var win                 = gui.Window.get();
+var maxheight           = window.screen.availHeight;
+var maxwidth            = window.screen.availWidth;
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Auto sign in
