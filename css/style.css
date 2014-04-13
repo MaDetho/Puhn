@@ -56,6 +56,10 @@ a:hover, a:focus {
     text-decoration: underline;
 }
 
+img.rounded {
+    border-radius: 100%;
+}
+
 ::-webkit-input-placeholder {
     color: #aaa;
 }
@@ -261,3 +265,8 @@ button.wide {
     position: absolute;
     bottom: 0; left: 0;
 }
+
+[data-status="online"] .avatar:before   { background: #0077ff; }
+[data-status="away"] .avatar:before     { background: #f4b400; }
+[data-status="busy"] .avatar:before     { background: #d73628; }
+[data-status="offline"] .avatar:before  { background: #888888; }
