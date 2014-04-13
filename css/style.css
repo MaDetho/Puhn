@@ -127,10 +127,10 @@ input[type=checkbox] {
 input[type=checkbox]:checked + label:before {  
     content: "\f00c";  
     font-family: FontAwesome;
-    font-size: 10px;  
+    font-size: 8px;  
     color: #fff;  
     text-align: center;  
-    line-height: 17px;  
+    line-height: 15px;  
 }
 
 button {
