@@ -5,6 +5,7 @@
     height: calc(100% - 70px);
     text-align: center;
     padding-top: 50px;
+    -webkit-user-select: none;
 }
 
 #signIn h1 {
@@ -13,6 +14,7 @@
     position: relative;
     margin-left: 50px;
     margin-bottom: 5px;
+    cursor: default;
 }
 
 #signIn h1:before {
@@ -27,6 +29,7 @@
 #signIn h5 {
     color: #888;
     margin-bottom: 0px;
+    cursor: default;
 }
 
 #signIn form {
@@ -58,6 +61,7 @@
     border-top: 1px solid rgba(255,255,255,.1);
     text-align: center;
     padding-top: 20px;
+    -webkit-user-select: none;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////
