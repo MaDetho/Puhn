@@ -57,9 +57,9 @@ optionMenu.append(new gui.MenuItem({ label: 'Profile settings' }));
 optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
 optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
-optionMenu.append(new gui.MenuItem({ label: 'Online' }));
-optionMenu.append(new gui.MenuItem({ label: 'Away' }));
-optionMenu.append(new gui.MenuItem({ label: 'Busy' }));
+optionMenu.append(new gui.MenuItem({ label: 'Online', icon: "img/status-online.png" }));
+optionMenu.append(new gui.MenuItem({ label: 'Away', icon: "img/status-away.png" }));
+optionMenu.append(new gui.MenuItem({ label: 'Busy', icon: "img/status-busy.png" }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
 optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
