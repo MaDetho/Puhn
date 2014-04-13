@@ -93,8 +93,8 @@
 
 #sidebar .profile .avatar:before {
     content: "";
-    width: 16px;
-    height: 16px;
+    width: 23px;
+    height: 23px;
     border: 3px solid #202224;
     border-radius: 100%;
     position: absolute;
@@ -200,8 +200,8 @@
 
 #sidebar .friends .avatar:before {
     content: "";
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border: 2px solid #202224;
     border-radius: 100%;
     position: absolute;
