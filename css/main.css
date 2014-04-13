@@ -76,6 +76,8 @@
     border-right: 1px solid #000;
     border-bottom: 1px solid rgba(255,255,255,.1);
     position: relative;
+    -webkit-user-select: none;
+    cursor: default;
 }
 
 #sidebar .profile .avatar {
@@ -171,6 +173,8 @@
     width: 100%;
     height: 60px;
     position: relative;
+    -webkit-user-select: none;
+    cursor: default;
 }
 
 #sidebar .friends ul li:hover {
