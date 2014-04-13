@@ -4,6 +4,7 @@ var gui                 = require('nw.gui');
 var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
+var optionMenu          = new gui.Menu();
 var win                 = gui.Window.get();
 var screenWidth         = window.screen.availWidth;
 var screenHeight        = window.screen.availHeight;
@@ -49,6 +50,18 @@ menubar.items[0].submenu.append(new gui.MenuItem({
     }
 }));
 win.menu = menubar;
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Options Context Menu
+optionMenu.append(new gui.MenuItem({ label: 'Profile settings' }));
+optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
+optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
+optionMenu.append(new gui.MenuItem({ type: 'separator' }));
+optionMenu.append(new gui.MenuItem({ label: 'Online' }));
+optionMenu.append(new gui.MenuItem({ label: 'Away' }));
+optionMenu.append(new gui.MenuItem({ label: 'Busy' }));
+optionMenu.append(new gui.MenuItem({ type: 'separator' }));
+optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Window bar
@@ -98,4 +111,9 @@ $('#signInTrouble').click(function() {
 // Open sign up page in default browser
 $('#signUpButton').click(function() {
     gui.Shell.openExternal('http://puhn.net/signup/');
+});
+
+// Open options context menu at mouse position
+$('#optionsButton').click(function(e) {
+	optionMenu.popup(e.pageX, e.pageY);
 });
