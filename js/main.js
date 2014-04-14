@@ -126,7 +126,7 @@ $('.friends ul li').click(function() {
 });
 
 // Close tab when 'X' icon is clicked
-$('.tabs ul li i').click(function() {
+$('.tabs ul').delegate('li i', 'click', function() {
     $(this).closest('li').remove();
 });
 
