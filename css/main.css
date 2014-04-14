@@ -256,23 +256,33 @@
 
 #application .tabs ul {
     width: 100%;
-    height: 100%;
+    height: 39px;
     margin: 0;
     padding: 0;
     list-style: none;
+    display: table;
+    border-collapse: collapse;
+    overflow: auto;
 }
 
 #application .tabs ul li {
-    height: 100%;
+    height: 39px;
     background: #ececec;
     border-right: 1px solid #ccc;
     color: #333;
     font-weight: 700;
-    padding: 0 40px 0 20px;
-    line-height: 40px;
-    float: left;
+    padding: 10px 40px 0 20px;
+    display: table-cell;
     position: relative;
     transition: background 150ms linear;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#application .tabs ul li:last-child {
+    border-right: 0px solid #ccc;
 }
 
 .#application .tabs ul li i {
@@ -299,11 +309,11 @@
 }
 
 #application .tabs ul li:hover {
-    background: #f2f2f2;
+    background: #f4f4f4;
 }
 
 #application .tabs ul li.active {
-    background: #fff;
+    background: #f8f8f8;
 }
 
 #application .chat {

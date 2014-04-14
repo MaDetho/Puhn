@@ -117,3 +117,15 @@ $('#signUpButton').click(function() {
 $('#optionsButton').click(function(e) {
 	optionMenu.popup(e.pageX, e.pageY);
 });
+
+// Create tab when friend is clicked
+$('.friends ul li').click(function() {
+    var firstName = $(this).clone().find('small').remove().end().text();
+    $('.tabs ul').append('<li>' + firstName + ' <i></i></li>');
+});
+
+// Close tab when 'X' icon is clicked
+$('.tabs ul li i').click(function() {
+    $(this).closest('li').remove();
+});
+
