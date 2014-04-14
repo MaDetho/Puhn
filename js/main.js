@@ -120,8 +120,9 @@ $('#optionsButton').click(function(e) {
 
 // Create tab when friend is clicked
 $('.friends ul li').click(function() {
-    var firstName = $(this).clone().find('small').remove().end().text();
-    $('.tabs ul').append('<li>' + firstName + ' <i></i></li>');
+    var firstName = $(this).attr('data-firstname');
+    var username = $(this).attr('data-username');
+    $('.tabs ul').append('<li data-username="' + username + '">' + firstName + '<i></i></li>');
 });
 
 // Close tab when 'X' icon is clicked
