@@ -133,7 +133,7 @@ $('.tabs ul').delegate('li i', 'click', function() {
 
 // Set active style on tab click
 $('.tabs ul').delegate('li', 'click', function() {
-    $(this).addClass('active');
     $('.tabs ul li').not(this).removeClass('active');
+    $(this).addClass('active');
 });
 
