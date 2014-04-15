@@ -183,12 +183,10 @@
 
 #sidebar .friends ul li:hover {
     background: #2c2f31;
-    transition: background 150ms linear;
 }
 
 #sidebar .friends ul li[data-status="offline"] {
     opacity: .5;
-    transition: opacity 300ms linear;
 }
 
 #sidebar .friends .avatar {
@@ -210,7 +208,6 @@
 
 #sidebar .friends ul li:hover .avatar:before {
     border: 2px solid #2c2f31;
-    transition: border 150ms linear;
 }
 
 #sidebar .friends .avatar img {
@@ -275,7 +272,6 @@
     padding: 10px 40px 0 20px;
     display: table-cell;
     position: relative;
-    transition: background 150ms linear;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -306,7 +302,6 @@
 
 #application .tabs ul li i:hover:before {
     opacity: 1;
-    transition: opacity 300ms linear;
 }
 
 #application .tabs ul li:hover {
@@ -517,7 +512,6 @@
 
 #application .send .emoticons i:hover:before {
     opacity: 1;
-    transition: opacity 300ms linear;
 }
 
 #application .send .drawing {
@@ -543,5 +537,4 @@
 
 #application .send .drawing:hover i:before {
     opacity: 1;
-    transition: opacity 300ms linear;
 }

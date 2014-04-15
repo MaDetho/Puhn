@@ -117,7 +117,6 @@ input[type="email"].big {
 
 .checkbox label:hover:before {
 	border: 1px solid rgba(255,255,255,1);
-    transition: border 300ms linear;
 }
 
 input[type=checkbox] {  
@@ -146,7 +145,6 @@ button {
     padding: 0 10px;
     outline: 0;
     display: inline-block;
-    transition: border 300ms linear, color 300ms linear, background 300ms linear;
 }
 
 button:hover:enabled {
@@ -228,7 +226,6 @@ button.wide {
 
 .windowBar i:hover:before {
     opacity: 1;
-    transition: opacity 300ms linear;
 }
 
 .windowBar i.close:before              { background-position: 0 0; }

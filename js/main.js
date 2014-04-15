@@ -122,7 +122,8 @@ $('#optionsButton').click(function(e) {
 $('.friends ul li').click(function() {
     var firstName = $(this).attr('data-firstname');
     var username = $(this).attr('data-username');
-    $('.tabs ul').append('<li data-username="' + username + '">' + firstName + '<i></i></li>');
+    $('.tabs ul li').removeClass('active');
+    $('.tabs ul').append('<li data-username="' + username + '" class="active">' + firstName + '<i></i></li>');
 });
 
 // Close tab when 'X' icon is clicked
