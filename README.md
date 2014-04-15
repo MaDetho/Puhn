@@ -1,8 +1,6 @@
-Puhn
-====
-Free instant messaging
-## License
+# Puhn
+Free, instant messaging - http://puhn.net
+# License
 
-This software is © 2014 puhn.net, released under the MIT licence.
-
-See the LICENSE file for details.
+This software is Â© 2014 `Puhn`, released under the MIT licence.
+See the `LICENSE` file for details.
