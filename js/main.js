@@ -57,9 +57,9 @@ optionMenu.append(new gui.MenuItem({ label: 'Profile settings' }));
 optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
 optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Online', icon: "img/status-online.png", checked: true }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Away', icon: "img/status-away.png", checked: false }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Busy', icon: "img/status-busy.png", checked: false }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Online', icon: 'img/status-online.png', checked: true }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Away', icon: 'img/status-away.png', checked: false }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Busy', icon: 'img/status-busy.png', checked: false }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
 optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
@@ -76,7 +76,7 @@ $('.windowBar .maximize').click(function() {
 });
 $('.windowBar .expand, .windowBar .compress').click(function() {
     win.toggleFullscreen();
-    $(this).toggleClass("expand").toggleClass("compress");
+    $(this).toggleClass('expand').toggleClass('compress');
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
