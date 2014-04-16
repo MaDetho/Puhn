@@ -118,24 +118,33 @@ $('#optionsButton').click(function(e) {
 	optionMenu.popup(e.pageX, e.pageY);
 });
 
-// Create tab when friend is clicked
+// Create tab and chat when friend is clicked
 $('.friends ul li').click(function() {
     var firstName = $(this).attr('data-firstname');
     var username = $(this).attr('data-username');
     $('.tabs ul li').removeClass('active');
     $('.tabs ul').append('<li data-username="' + username + '" class="active">' + firstName + '<i></i></li>');
+    $('.chat').hide();
+    $('.tabs').after('<div data-username="' + username + '" class="chat open"><div data-username="' + username + '" class="item normal"><div class="avatar"><img src="../img/default_small.png" class="rounded"></div><div class="content"><div class="name"><h6>' + firstName + '</h6></div><div class="message"><p>a normal message</p></div><div class="time"><p>7:34 PM</p></div></div></div></div>');
 });
 
-// Close tab when 'X' icon is clicked
+// Close tab and chat when 'X' icon is clicked
 $('.tabs ul').delegate('li i', 'click', function() {
+    var username = $(this).closest('li').attr('data-username');
     $(this).closest('li').remove();
+    $('.chat[data-username="' + username + '"]').remove();
 });
 
 // Set active style on tab click
 $('.tabs ul').delegate('li', 'click', function() {
+    var username = $(this).attr('data-username');
     if($(this).hasClass('active')) {
+        $('.chat').hide();
+        $('.chat[data-username="' + username + '"]').show();
         $('.tabs ul li').not(this).removeClass('active');
     } else {
+        $('.chat').hide();
+        $('.chat[data-username="' + username + '"]').show();
         $('.tabs ul li').removeClass('active');
         $(this).addClass('active');
     }
