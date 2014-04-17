@@ -46,7 +46,7 @@ var mongoUser = mongoose.model('User', userSchema);
 var mongoEmoticon = mongoose.model('Emoticon', emoticonsSchema);
 
 //Create New User
-exports.createNewChatUser = function(username, password, firstname, lastname, email, avatar, callback) {
+function createNewChatUser(username, password, firstname, lastname, email, avatar, callback) {
 	var newUser = new mongoUser({
 		usr: username,
 		pwd: password,
@@ -67,7 +67,7 @@ exports.createNewChatUser = function(username, password, firstname, lastname, em
 
 
 // Add friend
-function addFriend(username, friendId, callback) {
+exports.addFriend = function(username, friendId, callback) {
 	mongoUser.findOneAndUpdate(
 		{usr: username}, //Username
 		{$addToSet: {friends: friendId}}, // User _id of friend
@@ -80,7 +80,7 @@ function addFriend(username, friendId, callback) {
 }
 
 // remove friend
-function removeFriend(username, friendId, callback) {
+exports.removeFriend = function(username, friendId, callback) {
 	mongoUser.findOneAndUpdate(
 		{usr: username}, //Username
 		{$pull: {friends: friendId}}, // User _id of friend
@@ -93,7 +93,7 @@ function removeFriend(username, friendId, callback) {
 
 
 // get user with friends
-function getFullUserByUsername(username, callback) {
+exports.getFullUserByUsername = function(username, callback) {
 	mongoUser.findOne({usr: username})
 	.select('-pwd -created')
 	.populate('friends', '-pwd -created')
@@ -104,7 +104,7 @@ function getFullUserByUsername(username, callback) {
 }
 
 // get objectId user
-function getObjectIdbyUsername(username, callback) {
+exports.getObjectIdbyUsername = function(username, callback) {
 	mongoUser.findOne({usr: username})
 	.select('_id')
 	.exec(function (err, user) {
@@ -126,7 +126,7 @@ function usernameExists(username, callback) {
 }
 
 // Authenticate User
-function userAuthenticate(username, password, callback) {
+exports.userAuthenticate = function(username, password, callback) {
 	mongoUser.count({ usr: username, pwd: password }, function (err, count) {
 		if (err) return handleError(err);
 		if(count > 0){
@@ -138,46 +138,46 @@ function userAuthenticate(username, password, callback) {
 }
 
 //Add Friend Prozess
-function addFriendProcess(username, friendusername, callback) {
+exports.addFriendProcess = function(username, friendusername, callback) {
 	usernameExists(friendusername, function(exists) {
 		if(exists) {
 			getObjectIdbyUsername(friendusername, function(friendId) {
 				addFriend(username, friendId, function(done) {
 					callback(done);
-				}
-			}
+				});
+			});
 		} else {
 			callback(false);
 		}
-	}
+	});
 }
 
 //Remove Friend Prozess
-function addFriendProcess(username, friendusername, callback) {
+exports.addFriendProcess = function(username, friendusername, callback) {
 	usernameExists(friendusername, function(exists) {
 		if(exists) {
 			getObjectIdbyUsername(friendusername, function(friendId) {
 				removeFriend(username, friendId, function(done) {
 					callback(done);
-				}
-			}
+				});
+			});
 		} else {
 			callback(false);
 		}
-	}
+	});
 }
 
 //Register new User prozess
-function registerUserProzess(username, password, firstname, lastname, email, avatar, callback) {
+exports.registerUserProzess = function(username, password, firstname, lastname, email, avatar, callback) {
 	usernameExists(username, function(exists) {
 		if(!exists) {
 			createNewChatUser(username, password, firstname, lastname, email, avatar, function(done) {
 				callback(done);
-			}
+			});
 		} else {
 			callback(false);
 		}
-	}
+	});
 }
 
 
