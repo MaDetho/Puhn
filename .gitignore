@@ -7,3 +7,4 @@ libGLESv2.dll
 nw.exe
 nw.pak
 nwsnapshot.exe
+server/config.js
