@@ -14,5 +14,8 @@
         "max_width": 360,
         "max_height": 500,
         "position": "center"
+    },
+    "dependencies": {
+        "socket.io-client": ">= 0.9.16"
     }
 }

@@ -1,6 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////////
+//Enable HTTPS Auth
+require('https').globalAgent.options.rejectUnauthorized = false; 
+
 // Variables
 var gui                 = require('nw.gui');
+var io                  = require('socket.io-client');
+//var socket              = io.connect('https://puhn.net:9001', {secure: true});// Secure Socket.IO SSL Connection
 var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
@@ -66,6 +71,7 @@ optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 //////////////////////////////////////////////////////////////////////////////////////
 // Window bar
 $('.windowBar .close').click(function() {
+	//socket.disconnect();
     win.close();
 });
 $('.windowBar .minimize').click(function() {
@@ -89,7 +95,7 @@ $('#signInForm').submit(function() {
     var passwordVal = $('#signInPassword').val();
     localStorage.setItem('signInUsername', usernameVal);
     localStorage.setItem('signInPassword', passwordVal);
-    
+
     // Close sign in window, open the application window and maximize it
     win.close();
     gui.Window.open('application.html', {
