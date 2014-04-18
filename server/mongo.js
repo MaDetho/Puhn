@@ -1,5 +1,6 @@
-var config 		= require('./config');
-var mongoose 	= require('mongoose');
+var config 		= require('./config'),
+    mongoose 	= require('mongoose'),
+    bcrypt      = require('bcryptjs');
 
 //MongoDB Connection
 mongoose.connect(config.mongodb.uri, function(err){
@@ -174,13 +175,13 @@ exports.getFullUserByUsername = function(username, callback) {
  * @return 
  */
 exports.userAuthenticate = function(username, password, callback) {
-	mongoUser.count({ usr: username, pwd: password }, function (err, count) {
+	mongoUser.findOne({usr: username})
+	.exec(function (err, user) {
 		if (err) return handleError(err);
-		if(count > 0){
-			callback(true);
-		} else {
-			callback(false);
-		}
+		if (!user) callback(false);
+		bcrypt.compare(password, user.pwd, function(err, res) {
+			callback(res);
+		});
 	});
 }
 
@@ -241,14 +242,18 @@ exports.addFriendProcess = function(username, friendusername, callback) {
  * @return 
  */
 exports.registerUserProzess = function(username, password, firstname, lastname, email, avatar, callback) {
-	usernameExists(username, function(exists) {
-		if(!exists) {
-			createNewChatUser(username, password, firstname, lastname, email, avatar, function(done) {
-				callback(done);
+	bcrypt.genSalt(10, function(err, salt) {
+		bcrypt.hash(password, salt, function(err, hash) {
+			usernameExists(username, function(exists) {
+				if(!exists) {
+					createNewChatUser(username, hash, firstname, lastname, email, avatar, function(done) {
+						callback(done);
+					});
+				} else {
+					callback(false);
+				}
 			});
-		} else {
-			callback(false);
-		}
+		});
 	});
 }
 

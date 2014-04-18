@@ -1,9 +1,9 @@
 //Variables
-var https 		= require('https'),
-	fs 			= require('fs'),
-	config 		= require('./config'),
-	mongo	 	= require('./mongo'),
-	crypto 		= require("crypto");
+var https       = require('https'),
+    fs          = require('fs'),
+    config      = require('./config'),
+    mongo       = require('./mongo'),
+    crypto      = require("crypto-js");
 
 //SSL
 var options = {
@@ -19,7 +19,6 @@ var app = https.createServer(options, function (req, res) {
 var io = require('socket.io').listen(app);
 	
 app.listen(config.https.port);
-
 
 io.sockets.on('connection', function (socket) {
     console.log("Connected");
