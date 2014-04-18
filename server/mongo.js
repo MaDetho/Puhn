@@ -45,7 +45,18 @@ var mongoMessage = mongoose.model('Message', chatMessageSchema);
 var mongoUser = mongoose.model('User', userSchema);
 var mongoEmoticon = mongoose.model('Emoticon', emoticonsSchema);
 
-//Create New User
+/**
+ * Create New User
+ * @method createNewChatUser
+ * @param {} username
+ * @param {} password
+ * @param {} firstname
+ * @param {} lastname
+ * @param {} email
+ * @param {} avatar
+ * @param {} callback
+ * @return 
+ */
 function createNewChatUser(username, password, firstname, lastname, email, avatar, callback) {
 	var newUser = new mongoUser({
 		usr: username,
@@ -64,47 +75,14 @@ function createNewChatUser(username, password, firstname, lastname, email, avata
 	});
 }
 
-
-
-// Add friend
-exports.addFriend = function(username, friendId, callback) {
-	mongoUser.findOneAndUpdate(
-		{usr: username}, //Username
-		{$addToSet: {friends: friendId}}, // User _id of friend
-		{safe: true, upsert: true},
-		function(err) {
-			if (err) return handleError(err);
-			callback(true);
-		}
-	);
-}
-
-// remove friend
-exports.removeFriend = function(username, friendId, callback) {
-	mongoUser.findOneAndUpdate(
-		{usr: username}, //Username
-		{$pull: {friends: friendId}}, // User _id of friend
-		{safe: true, upsert: true},
-		function(err, model) {
-			if (err) return handleError(err);
-			callback(true);
-		});
-}
-
-
-// get user with friends
-exports.getFullUserByUsername = function(username, callback) {
-	mongoUser.findOne({usr: username})
-	.select('-pwd -created')
-	.populate('friends', '-pwd -created')
-	.exec(function (err, user) {
-	  if (err) return handleError(err);
-	  callback(user);
-	});
-}
-
-// get objectId user
-exports.getObjectIdbyUsername = function(username, callback) {
+/**
+ * Get objectId for user
+ * @method getObjectIdbyUsername
+ * @param {} username
+ * @param {} callback
+ * @return 
+ */
+function getObjectIdbyUsername(username, callback) {
 	mongoUser.findOne({usr: username})
 	.select('_id')
 	.exec(function (err, user) {
@@ -113,7 +91,13 @@ exports.getObjectIdbyUsername = function(username, callback) {
 	});
 }
 
-// Check if User Exists
+/**
+ * Check if User Exists
+ * @method usernameExists
+ * @param {} username
+ * @param {} callback
+ * @return 
+ */
 function usernameExists(username, callback) {
 	mongoUser.count({ usr: username }, function (err, count) {
 		if (err) return handleError(err);
@@ -125,7 +109,70 @@ function usernameExists(username, callback) {
 	});
 }
 
-// Authenticate User
+/**
+ * Add friend
+ * @method addFriend
+ * @param {} username
+ * @param {} friendId
+ * @param {} callback
+ * @return 
+ */
+function addFriend(username, friendId, callback) {
+	mongoUser.findOneAndUpdate(
+		{usr: username}, //Username
+		{$addToSet: {friends: friendId}}, // User _id of friend
+		{safe: true, upsert: true},
+		function(err) {
+			if (err) return handleError(err);
+			callback(true);
+		}
+	);
+}
+
+/**
+ * remove friend
+ * @method removeFriend
+ * @param {} username
+ * @param {} friendId
+ * @param {boolean} callback
+ * @return 
+ */
+function removeFriend(username, friendId, callback) {
+	mongoUser.findOneAndUpdate(
+		{usr: username}, //Username
+		{$pull: {friends: friendId}}, // User _id of friend
+		{safe: true, upsert: true},
+		function(err, model) {
+			if (err) return handleError(err);
+			callback(true);
+		});
+}
+
+/**
+ * get user with friends
+ * @method getFullUserByUsername
+ * @param {} username
+ * @param {user} callback
+ * @return 
+ */
+exports.getFullUserByUsername = function(username, callback) {
+	mongoUser.findOne({usr: username})
+	.select('-pwd -created')
+	.populate('friends', '-pwd -created')
+	.exec(function (err, user) {
+	  if (err) return handleError(err);
+	  callback(user);
+	});
+}
+
+/**
+ * Authenticate User
+ * @method userAuthenticate
+ * @param {} username
+ * @param {} password
+ * @param {boolean} callback
+ * @return 
+ */
 exports.userAuthenticate = function(username, password, callback) {
 	mongoUser.count({ usr: username, pwd: password }, function (err, count) {
 		if (err) return handleError(err);
@@ -137,7 +184,14 @@ exports.userAuthenticate = function(username, password, callback) {
 	});
 }
 
-//Add Friend Prozess
+/**
+ * Add Friend Prozess
+ * @method addFriendProcess
+ * @param {} username
+ * @param {} friendusername
+ * @param {boolean} callback
+ * @return 
+ */
 exports.addFriendProcess = function(username, friendusername, callback) {
 	usernameExists(friendusername, function(exists) {
 		if(exists) {
@@ -152,7 +206,14 @@ exports.addFriendProcess = function(username, friendusername, callback) {
 	});
 }
 
-//Remove Friend Prozess
+/**
+ * Remove Friend Prozess
+ * @method addFriendProcess
+ * @param {} username
+ * @param {} friendusername
+ * @param {} callback
+ * @return 
+ */
 exports.addFriendProcess = function(username, friendusername, callback) {
 	usernameExists(friendusername, function(exists) {
 		if(exists) {
@@ -167,7 +228,18 @@ exports.addFriendProcess = function(username, friendusername, callback) {
 	});
 }
 
-//Register new User prozess
+/**
+ * Register new User prozess
+ * @method registerUserProzess
+ * @param {} username
+ * @param {} password
+ * @param {} firstname
+ * @param {} lastname
+ * @param {} email
+ * @param {} avatar
+ * @param {boolean} callback
+ * @return 
+ */
 exports.registerUserProzess = function(username, password, firstname, lastname, email, avatar, callback) {
 	usernameExists(username, function(exists) {
 		if(!exists) {
@@ -181,6 +253,12 @@ exports.registerUserProzess = function(username, password, firstname, lastname, 
 }
 
 
+/**
+ * Error Handler
+ * @method handleError
+ * @param {} error
+ * @return 
+ */
 function handleError(error){
 	console.log(error);
 }
