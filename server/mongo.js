@@ -223,7 +223,7 @@ exports.userAuthenticate = function (username, password, callback) {
     })
         .exec(function (err, user) {
             if (err) return handleError(err);
-            if (!user) callback(false);
+            if (!user) return callback(false);
             bcrypt.compare(password, user.pwd, function (err, res) {
                 callback(res);
             });

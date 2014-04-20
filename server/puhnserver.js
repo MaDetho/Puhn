@@ -23,5 +23,9 @@ var io = require('socket.io').listen(app);
 app.listen(config.https.port);
 
 io.sockets.on('connection', function (socket) {
-    console.log("Connected");
+    socket.on('sign in', function (userdata, callback) {
+        mongo.userAuthenticate(userdata.username, userdata.password, function (isValid) {
+            callback(isValid);
+        });
+    });
 });

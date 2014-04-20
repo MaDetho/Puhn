@@ -95,26 +95,36 @@ $('.windowBar .maximize').click(function() {
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Sign in
-$('#signInForm').submit(function() {
+$('#signInForm').submit(function () {
     event.preventDefault();
-    
+
     // Set the username and password in localStorage
     var usernameVal = $('#signInUsername').val();
     var passwordVal = $('#signInPassword').val();
     localStorage.setItem('signInUsername', usernameVal);
     localStorage.setItem('signInPassword', passwordVal);
 
-    // Close sign in window, open the application window and maximize it
-    win.close();
-    gui.Window.open(config.views.chat.filename, {
-        toolbar: false,
-        frame: false,
-        focus: true,
-        width: screenWidth,
-        height: screenHeight,
-        min_width: 600,
-        min_height: 460,
-        position: 'center'
+    //Authentication
+    socket.emit('sign in', {
+        username: usernameVal,
+        password: passwordVal
+    }, function (isValid) {
+        if (isValid) {
+            // Close sign in window, open the application window and maximize it
+            win.close();
+            gui.Window.open(config.views.chat.filename, {
+                toolbar: false,
+                frame: false,
+                focus: true,
+                width: screenWidth,
+                height: screenHeight,
+                min_width: 600,
+                min_height: 460,
+                position: 'center'
+            });
+        } else {
+            alert("wrong data");
+        }
     });
 
 });
@@ -153,11 +163,11 @@ $('#optionsButton').click(function(e) {
 //Socket.IO: On error
 socket.on('error', function() {
     if (!socket.socket.connected) {
-        alert("Could not connect to Server");
+        //alert("Could not connect to Server" + config.socket.url);
     }
 });
 
 //Socket.IO: On connect
 socket.on('connect', function() {
-    alert("Connected to Server");
+   //alert("Connected to Server" + config.socket.url);
 });
