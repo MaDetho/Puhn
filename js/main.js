@@ -78,6 +78,11 @@ $('.windowBar .close').click(function() {
 $('.windowBar .minimize').click(function() {
     win.minimize();
 });
+
+//Fix for win8 Fullscreen bug; https://github.com/rogerwang/node-webkit/issues/1021
+if(process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
+   require('nw.gui').Window.get().setMaximumSize(screen.availWidth + 15, screen.availHeight + 15);
+}
 $('.windowBar .maximize').click(function() {
     win.maximize();
 });
