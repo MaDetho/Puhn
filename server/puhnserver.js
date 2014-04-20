@@ -1,9 +1,9 @@
 //Variables
-var https       = require('https'),
-    fs          = require('fs'),
-    config      = require('./config'),
-    mongo       = require('./mongo'),
-    crypto      = require("crypto-js");
+var https = require('https'),
+    fs = require('fs'),
+    config = require('./config'),
+    mongo = require('./mongo'),
+    crypto = require("crypto-js");
 
 //SSL
 var options = {
@@ -13,14 +13,15 @@ var options = {
 
 //Redirect to Puhn.net
 var app = https.createServer(options, function (req, res) {
-    res.writeHead(302, {'Location': 'http://puhn.net'});
+    res.writeHead(302, {
+        'Location': 'http://puhn.net'
+    });
     res.end();
 });
 var io = require('socket.io').listen(app);
-	
+
 app.listen(config.https.port);
 
 io.sockets.on('connection', function (socket) {
     console.log("Connected");
 });
-
