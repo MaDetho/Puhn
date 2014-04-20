@@ -140,7 +140,13 @@ win.on("loaded", function () {
             if (process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
                 gui.Window.get().setMaximumSize(screenWidth + 15, screen.availHeight + 15);
             }
-                $('#sidebar .profile h6').text(global.user.usr);
+            
+            var profileContent = '<div class="avatar" data-status="' + global.user.status + '"><img src="' + global.user.avatar + '" class="rounded"></div><h4>' + global.user.firstname + '</h4><h6>@' + global.user.usr + '</h6><button id="optionsButton" class="rounded">...</button>';
+            
+            var friendsContent = '<ul><li class="active"><div class="avatar" data-status="online"><img src="../img/default_small.png" class="rounded"></div><h6>Martin <small>@MaDetho</small></h6></li><li><div class="avatar" data-status="busy"><img src="../img/default_small.png" class="rounded"></div><h6>Daniel <small>@loe</small></h6></li></ul>';
+            
+            $('#sidebar .profile').html(profileContent);
+            $('#sidebar .friends').html(friendsContent);
         }
     });
 });
