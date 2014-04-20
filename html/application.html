@@ -4,20 +4,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     
-    <!-- Window bar -->
-    <div class="windowBar">
-        <div class="title">Puhn</div>
-        <div class="actions">
-            <i class="close"></i>
-            <i class="minimize"></i>
-            <i class="maximize"></i>
-        </div>
-        <div class="fullscreen">
-            <i class="expand"></i>
-        </div>
-    </div>
-    
-    <!-- Window content -->
     <div class="windowContent">
         <div id="sidebar">
             <div class="profile" data-status="online">
@@ -26,7 +12,7 @@
                 </div>
                 <h4>Christopher</h4>
                 <h6>@ccarlsen</h6>
-                <button id="optionsButton">...</button>
+                <button id="optionsButton" class="rounded">...</button>
             </div>
             <div class="friends">
                 <ul>
@@ -46,14 +32,56 @@
             </div>
         </div>
         <div id="application">
-            <div class="tabs">
-                <ul></ul>
+            <div class="top">
+                <ul class="windowBar">
+                    <li class="icon minimize"></li>
+                    <li class="icon maximize"></li>
+                    <li class="icon close"></li>
+                </ul>
+            </div>
+            <div data-username="MaDetho" class="chat">
+                <div data-username="MaDetho" class="item normal">
+                    <div class="avatar">
+                        <img src="../img/default_small.png" class="rounded">
+                    </div>
+                    <div class="content">
+                        <div class="name">
+                            <h6>Martin</h6>
+                        </div>
+                        <div class="message">
+                            <p>a normal message</p>
+                        </div>
+                        <div class="time">
+                            <p>7:34 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-username="MaDetho" class="item append">
+                    <div class="content">
+                        <div class="message">
+                            <p>an appended message</p>
+                        </div>
+                        <div class="time">
+                            <p>7:34 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-username="MaDetho" class="item presence">
+                    <div class="animation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <div class="message">
+                            <p><strong>Martin</strong> is typing...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="send">
                 <form id="sendForm">
-                    <div class="emoticons"><i></i></div>
                     <textarea id="sendMessage" placeholder="Send a message"></textarea>
-                    <div class="drawing"><i></i></div>
                 </form>
             </div>
         </div>

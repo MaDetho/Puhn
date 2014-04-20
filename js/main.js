@@ -5,7 +5,7 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 // Variables
 var gui                 = require('nw.gui');
 var io                  = require('socket.io-client');
-var socket              = io.connect('https://puhn.net:9001', {secure: true});// Secure Socket.IO SSL Connection
+var socket              = io.connect('https://puhn.net:9001', {secure: true}); // Secure Socket.IO SSL Connection
 var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
@@ -13,6 +13,7 @@ var optionMenu          = new gui.Menu();
 var win                 = gui.Window.get();
 var screenWidth         = window.screen.availWidth;
 var screenHeight        = window.screen.availHeight;
+var retina              = window.devicePixelRatio > 1;
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Remember me
@@ -62,9 +63,9 @@ optionMenu.append(new gui.MenuItem({ label: 'Profile settings' }));
 optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
 optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Online', icon: 'img/status-online.png', checked: true }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Away', icon: 'img/status-away.png', checked: false }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Busy', icon: 'img/status-busy.png', checked: false }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Online', icon: 'img/status_online.png', checked: true }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Away', icon: 'img/status_away.png', checked: false }));
+optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Busy', icon: 'img/status_busy.png', checked: false }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
 optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
@@ -124,56 +125,17 @@ $('#optionsButton').click(function(e) {
 	optionMenu.popup(e.pageX, e.pageY);
 });
 
-// Create tab and chat when friend is clicked
-$('.friends ul li').click(function() {
-    var firstName = $(this).attr('data-firstname');
-    var username = $(this).attr('data-username');
-    if($('.tabs ul li[data-username="' + username + '"]').length){
-        $('.tabs ul li').removeClass('active');
-        $('.tabs ul li[data-username="' + username + '"]').addClass('active');
-        $('.chat').hide();
-        $('.chat[data-username="' + username + '"]').show();
-    } else {
-        $('.tabs ul li').removeClass('active');
-        $('.tabs ul').append('<li data-username="' + username + '" class="active">' + firstName + '<i></i></li>');
-        $('.chat').hide();
-        $('.tabs').after('<div data-username="' + username + '" class="chat open"><div data-username="' + username + '" class="item normal"><div class="avatar"><img src="../img/default_small.png" class="rounded"></div><div class="content"><div class="name"><h6>' + firstName + '</h6></div><div class="message"><p>a normal message</p></div><div class="time"><p>7:34 PM</p></div></div></div></div>');
-    }
-});
-
-
-// Set active style on tab click
-$('.tabs ul').delegate('li', 'click', function() {
-    var username = $(this).attr('data-username');
-    $(this).delegate('i', 'click', function() {
-        $(this).closest('li').remove();
-        $('.chat[data-username="' + username + '"]').remove();
-    });
-    if($(this).hasClass('active')) {
-        alert('test1');
-        $('.chat').hide();
-        $('.chat[data-username="' + username + '"]').show();
-        $('.tabs ul li').not(this).removeClass('active');
-    } else {
-        alert('test2');
-        $('.chat').hide();
-        $('.chat[data-username="' + username + '"]').show();
-        $('.tabs ul li').removeClass('active');
-        $(this).addClass('active');
-    }
-});
-
 //////////////////////////////////////////////////////////////////////////////////////
-//Socket.IO Events
+//Socket.IO events
 
-//Socket.IO: On Error
+//Socket.IO: On error
 socket.on('error', function() {
     if (!socket.socket.connected) {
         alert("Could not connect to Server");
     }
 });
 
-//Socket.IO: On Connect
+//Socket.IO: On connect
 socket.on('connect', function() {
     alert("Connected to Server");
 });

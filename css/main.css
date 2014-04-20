@@ -9,7 +9,6 @@
 }
 
 #signIn h1 {
-    color: #fff;
     display: inline-block;
     position: relative;
     margin-left: 50px;
@@ -21,13 +20,22 @@
     content: "";
     width: 50px;
     height: 50px;
-    background: url("../img/logo50.png");
+    background: url("../img/logo.png");
     position: absolute;
     top: 6px; left: -56px;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 240dpi) {
+    #signIn h1:before {
+        background: url("../img/logo@2x.png");
+        background-size: 50px;
+    }
+}
+
 #signIn h5 {
-    color: #888;
+    font-weight: normal;
+    color: #666;
     margin-bottom: 0px;
     cursor: default;
 }
@@ -58,7 +66,7 @@
 #signUp {
     width: 100%;
     height: 70px;
-    border-top: 1px solid rgba(255,255,255,.1);
+    border-top: 1px solid #d0d0d0;
     text-align: center;
     padding-top: 20px;
     -webkit-user-select: none;
@@ -69,7 +77,8 @@
 #sidebar {
     width: 300px;
     height: 100%;
-    background: #202224;
+    background: #f0f0f0;
+    border-right: 1px solid #d0d0d0;
     position: absolute;
     top: 0; left: 0;
 }
@@ -77,8 +86,7 @@
 #sidebar .profile {
     width: 100%;
     height: 100px;
-    border-right: 1px solid #000;
-    border-bottom: 1px solid rgba(255,255,255,.1);
+    border-bottom: 1px solid #d0d0d0;
     position: relative;
     -webkit-user-select: none;
     cursor: default;
@@ -95,7 +103,7 @@
     content: "";
     width: 23px;
     height: 23px;
-    border: 3px solid #202224;
+    border: 3px solid #f0f0f0;
     border-radius: 100%;
     position: absolute;
     bottom: -3px; right: -3px;
@@ -109,8 +117,6 @@
 #sidebar .profile h4 {
     width: 190px;
     height: 25px;
-    color: #fff;
-    font-weight: 400;
     position: absolute;
     top: 30px; left: 90px;
     white-space: nowrap;
@@ -121,8 +127,8 @@
 #sidebar .profile h6 {
     width: 160px;
     height: 20px;
-    color: #888;
-    font-weight: 400;
+    color: #666;
+    font-weight: normal;
     font-size: 16px;
     line-height: 20px;
     position: absolute;
@@ -135,7 +141,7 @@
 #sidebar .profile button {
     width: 30px;
     height: 30px;
-    font-weight: 600;
+    font-weight: bold;
     padding: 0 0 10px 0;
     line-height: 24px;
     letter-spacing: 1px;
@@ -152,17 +158,18 @@
 }
 
 #sidebar .friends::-webkit-scrollbar {
-    width: 10px;
+    width: 16px;
 }
 
 #sidebar .friends::-webkit-scrollbar-track {
-    background-color: #000;
+    background-color: transparent;
 }
 
 #sidebar .friends::-webkit-scrollbar-thumb {
-    background-color: #36393b;
-    border: 2px solid transparent;
+    background-color: rgba(130,130,130,.5);
+    border: 4px solid transparent;
     background-clip: content-box;
+    border-radius: 2px;
 }
 
 #sidebar .friends ul {
@@ -182,7 +189,8 @@
 }
 
 #sidebar .friends ul li:hover {
-    background: #2c2f31;
+    border-left: 5px solid #0077ff;
+    transition: border-left 200ms ease-in-out;
 }
 
 #sidebar .friends ul li[data-status="offline"] {
@@ -200,14 +208,10 @@
     content: "";
     width: 16px;
     height: 16px;
-    border: 2px solid #202224;
+    border: 2px solid #f0f0f0;
     border-radius: 100%;
     position: absolute;
     bottom: -2px; right: -2px;
-}
-
-#sidebar .friends ul li:hover .avatar:before {
-    border: 2px solid #2c2f31;
 }
 
 #sidebar .friends .avatar img {
@@ -218,8 +222,6 @@
 #sidebar .friends h6 {
     width: 210px;
     height: 40px;
-    color: #fff;
-    font-weight: 600;
     line-height: 40px;
     position: absolute;
     top: 10px; left: 70px;
@@ -229,7 +231,8 @@
 }
 
 #sidebar .friends h6 small {
-    color: #888;
+    font-weight: normal;
+    color: #666;
 }
 
 #application {
@@ -240,80 +243,55 @@
     top: 0; right: 0;
 }
 
-#application .tabs {
+#application .top {
     width: 100%;
     height: 40px;
-    background: #ececec;
-    border-bottom: 1px solid #ccc;
+    background: #fff;
+    border-bottom: 1px solid #d0d0d0;
     position: absolute;
     top: 0; left: 0;
     -webkit-user-select: none;
     cursor: default;
 }
 
-#application .tabs ul {
-    width: 100%;
-    height: 39px;
-    margin: 0;
-    padding: 0;
+#application .top .windowBar {
+    width: 90px;
+    height: 40px;
+    border-left: 1px solid #d0d0d0;
+    padding: 15px 0;
     list-style: none;
-    display: table;
-    table-layout: fixed;
-    border-collapse: collapse;
-    overflow: auto;
+    position: absolute;
+    top: 0; right: 0;
 }
 
-#application .tabs ul li {
-    height: 39px;
-    background: #ececec;
-    border-right: 1px solid #ccc;
-    color: #333;
-    font-weight: 700;
-    padding: 10px 40px 0 20px;
-    display: table-cell;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#application .tabs ul li:last-child {
-    border-right: 0px solid #ccc;
-}
-
-.#application .tabs ul li i {
-    -webkit-app-region: no-drag;
-    width: 50px;
-    height: 30px;
-    position: relative;
-}
-
-#application .tabs ul li i:before {
-    content: "";
+#application .top .windowBar li {
     width: 10px;
     height: 10px;
-    background: url("../img/icons.png");
-    background-position: 0 -10px;
-    position: absolute;
-    top: 15px; right: 10px;
-    opacity: .3;
+    float: left;
+    margin-left: 15px;
 }
 
-#application .tabs ul li i:hover:before {
-    opacity: 1;
+#application .top .windowBar li:last-child {
+    margin-right: 0px;
 }
 
-#application .tabs ul li:hover {
-    background: #f4f4f4;
+#application .top .windowBar li:hover {
+    opacity: .7;
 }
 
-#application .tabs ul li.active {
-    background: #fff;
+#application .top .windowBar li.minimize {
+    background-position: -30px 0px;
+}
+
+#application .top .windowBar li.maximize {
+    background-position: -15px 0px;
+}
+
+#application .top .windowBar li.close {
+    background-position: 0px 0px;
 }
 
 #application .chat {
-    display: none;
     width: 100%;
     height: calc(100% - 119px);
     background: #fff;
@@ -323,28 +301,13 @@
     overflow-y: scroll;
 }
 
-#application .chat.open {
-    display: block;
-}
-
 #application .chat::-webkit-scrollbar {
-    width: 10px;
-}
-
-#application .chat::-webkit-scrollbar-track {
-    background-color: #ececec;
-    border-left: 1px solid #ccc;
-}
-
-#application .chat::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
-    border: 2px solid transparent;
-    background-clip: content-box;
+    display: none;
 }
 
 #application .chat .item {
     width: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #d0d0d0;
     position: relative;
 }
 
@@ -396,10 +359,6 @@
     height: 20px;
 }
 
-#application .chat .item .content .name h6 {
-    font-weight: 700;
-}
-
 #application .chat .item .content .message {
     width: 100%;
     min-height: 20px;
@@ -441,7 +400,7 @@
     height: 8px;
     border-radius: 100%;
     float: left;
-    margin: 22px 4px 0 4px;
+    margin: 21px 4px 0 4px;
     -webkit-animation: loading 0.6s infinite alternate;
 }
 #application .chat .item.presence .animation span:nth-of-type(1) {
@@ -465,8 +424,8 @@
 #application .send {
     width: 100%;
     height: 80px;
-    background: #fff;
-    border-top: 1px solid #ccc;
+    background: #f0f0f0;
+    border-top: 1px solid #d0d0d0;
     padding: 20px;
     position: absolute;
     bottom: 0; left: 0;
@@ -475,71 +434,33 @@
 }
 
 #application .send textarea {
-    width: calc(100% - 40px);
+    width: 100%;
     height: 40px;
     background: #fff; 
-    border: 1px solid #ccc;
-    font-family: Open Sans, Arial, sans-serif;
+    border: 1px solid #d0d0d0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     color: #333;
     font-size: 14px;
     margin: 0;
-    padding: 10px 50px 0 40px;
+    padding: 12px 12px 0 12px;
     outline: 0;
     display: block;
     resize: none;
 }
 
 #application .send textarea::-webkit-scrollbar {
-    width: 10px;
+    width: 16px;
 }
 
 #application .send textarea::-webkit-scrollbar-track {
-    background-color: #ececec;
-    border-left: 1px solid #ccc;
+    background-color: transparent;
 }
 
 #application .send textarea::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
-    border: 2px solid transparent;
+    background-color: rgba(130,130,130,.5);
+    border: 4px solid transparent;
     background-clip: content-box;
-}
-
-#application .send .emoticons i:before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    background: url("../img/icons.png");
-    background-position: top right;
-    position: absolute;
-    top: 30px; left: 30px;
-    opacity: .3;
-}
-
-#application .send .emoticons i:hover:before {
-    opacity: 1;
-}
-
-#application .send .drawing {
-    width: 40px;
-    height: 40px;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    position: absolute;
-    top: 20px; right: 20px;
-}
-
-#application .send .drawing i:before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    background: url("../img/icons.png");
-    background-position: -84px -20px;
-    position: absolute;
-    top: 12px; left: 11px;
-    opacity: .3;
-}
-
-#application .send .drawing:hover i:before {
-    opacity: 1;
+    border-radius: 2px;
 }
