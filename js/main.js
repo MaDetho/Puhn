@@ -59,7 +59,15 @@ win.menu = menubar;
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Options Context Menu
-optionMenu.append(new gui.MenuItem({ label: 'Profile settings' }));
+optionMenu.append(new gui.MenuItem({
+    label: 'Profile settings',
+    click: function() {
+        $('#profileSettings').fadeIn(200);
+        $('#settingsButton').click(function() {
+            $('#profileSettings').fadeOut(200);
+        });
+    }
+}));
 optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
 optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
