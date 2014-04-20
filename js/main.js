@@ -6,7 +6,8 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 var gui                 = require('nw.gui');
 var io                  = require('socket.io-client');
 var viewUtil            = require('../js/ViewUtil.js');
-var socket              = io.connect('https://puhn.net:9001', {secure: true}); // Secure Socket.IO SSL Connection
+var config              = require('../js/PuhnConfig.js');
+var socket              = io.connect(config.socket.url, {secure: true}); // Secure Socket.IO SSL Connection
 var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
 var help                = new gui.Menu();
@@ -81,9 +82,6 @@ optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 //////////////////////////////////////////////////////////////////////////////////////
 // Window bar
 
-//Fix for win8 Fullscreen bug; https://github.com/rogerwang/node-webkit/issues/1021
-
-
 $('.windowBar .close').click(function() {
 	socket.disconnect();
     win.close();
@@ -108,7 +106,7 @@ $('#signInForm').submit(function() {
 
     // Close sign in window, open the application window and maximize it
     win.close();
-    gui.Window.open('application.html', {
+    gui.Window.open(config.views.chat.filename, {
         toolbar: false,
         frame: false,
         focus: true,
@@ -125,7 +123,7 @@ $('#signInForm').submit(function() {
 win.on("loaded", function () {
     viewUtil.getCurrentWindowFilename(window.location.pathname, function (filename) {
         //Chat window loaded
-        if (filename == "application.html") {
+        if (filename == config.views.chat.filename) {
             //Fix for win8 Fullscreen bug; https://github.com/rogerwang/node-webkit/issues/1021
             if (process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
                 gui.Window.get().setMaximumSize(screenWidth + 15, screen.availHeight + 15);
@@ -136,12 +134,12 @@ win.on("loaded", function () {
 
 // Open recover page in default browser
 $('#signInTrouble').click(function() {
-    gui.Shell.openExternal('http://puhn.net/recover/');
+    gui.Shell.openExternal(config.links.recover);
 });
 
 // Open sign up page in default browser
 $('#createAnAccount').click(function() {
-    gui.Shell.openExternal('http://puhn.net/signup/');
+    gui.Shell.openExternal(config.links.signup);
 });
 
 // Open options context menu at mouse position
