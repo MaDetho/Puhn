@@ -118,7 +118,7 @@ $('#signInTrouble').click(function() {
 });
 
 // Open sign up page in default browser
-$('#signUpButton').click(function() {
+$('#createAnAccount').click(function() {
     gui.Shell.openExternal('http://puhn.net/signup/');
 });
 

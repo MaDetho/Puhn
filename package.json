@@ -8,11 +8,11 @@
         "toolbar": false,
         "frame": false,
         "width": 360,
-        "height": 490,
+        "height": 480,
         "min_width": 360,
-        "min_height": 490,
+        "min_height": 480,
         "max_width": 360,
-        "max_height": 490,
+        "max_height": 480,
         "position": "center"
     },
     "dependencies": {
