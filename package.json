@@ -7,6 +7,7 @@
         "icon": "img/logo500.png",
         "toolbar": false,
         "frame": false,
+        "resizable": false,
         "width": 360,
         "height": 480,
         "min_width": 360,
