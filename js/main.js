@@ -110,6 +110,8 @@ $('#signInForm').submit(function () {
         password: passwordVal
     }, function (user) {
         if (user) {
+            //Global User Object
+            global.user = user;
             // Close sign in window, open the application window and maximize it
             win.close();
             gui.Window.open(config.views.chat.filename, {
@@ -138,6 +140,7 @@ win.on("loaded", function () {
             if (process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
                 gui.Window.get().setMaximumSize(screenWidth + 15, screen.availHeight + 15);
             }
+                $('#sidebar .profile h6').text(global.user.usr);
         }
     });
 });
