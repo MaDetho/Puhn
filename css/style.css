@@ -186,7 +186,8 @@ button.wide {
 [data-status="busy"] .avatar:before     { background: #d73628; }
 [data-status="offline"] .avatar:before  { background: #888888; }
 
-.icon {
+.icon:after {
+    content: "";
     background-image: url("../img/icons.png");
     background-repeat: no-repeat;
     background-size: 100px;
@@ -194,7 +195,66 @@ button.wide {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (min-resolution: 240dpi) {
-    .icon {
+    .icon:after {
         background-image: url("../img/icons@2x.png");
     }
+}
+
+.windowBar {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    width: 100%;
+    height: 30px;
+    background: #fff;
+    border-bottom: 1px solid #d0d0d0;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.windowBar ul {
+    width: auto;
+    height: 30px;
+    list-style: none;
+    position: absolute;
+    top: 0; right: 0;
+}
+
+.windowBar ul li {
+    -webkit-app-region: no-drag;
+    width: 40px;
+    height: 30px;
+    border-left: 1px solid #d0d0d0;
+    float: left;
+    position: relative;
+}
+
+.windowBar ul li:after {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 10px; left: 15px;
+}
+
+.windowBar ul li:hover {
+    opacity: .7;
+}
+
+.windowBar ul li.minimize:after {
+    background-position: -30px 0px;
+}
+
+.windowBar ul li.maximize:after {
+    background-position: -15px 0px;
+}
+
+.windowBar ul li.close:after {
+    background-position: 0px 0px;
+}
+
+.windowContent {
+    -webkit-app-region: no-drag;
+    width: 100%;
+    height: calc(100% - 30px);
+    position: absolute;
+    bottom: 0; left: 0;
 }
