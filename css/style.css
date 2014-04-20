@@ -160,7 +160,6 @@ button:hover:enabled {
 }
 
 button:active:enabled {
-    border: none;
     background: #0077ff;
 }
 
