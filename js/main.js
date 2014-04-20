@@ -108,8 +108,8 @@ $('#signInForm').submit(function () {
     socket.emit('sign in', {
         username: usernameVal,
         password: passwordVal
-    }, function (isValid) {
-        if (isValid) {
+    }, function (user) {
+        if (user) {
             // Close sign in window, open the application window and maximize it
             win.close();
             gui.Window.open(config.views.chat.filename, {

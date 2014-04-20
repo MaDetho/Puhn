@@ -25,7 +25,13 @@ app.listen(config.https.port);
 io.sockets.on('connection', function (socket) {
     socket.on('sign in', function (userdata, callback) {
         mongo.userAuthenticate(userdata.username, userdata.password, function (isValid) {
-            callback(isValid);
+            if (isValid) {
+                mongo.getFullUserByUsername(userdata.username, function (user) {
+                    callback(user);
+                });
+            } else {
+                callback(false);
+            }
         });
     });
 });
