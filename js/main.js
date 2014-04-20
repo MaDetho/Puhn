@@ -5,6 +5,7 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 // Variables
 var gui                 = require('nw.gui');
 var io                  = require('socket.io-client');
+var viewUtil            = require('../js/ViewUtil.js');
 var socket              = io.connect('https://puhn.net:9001', {secure: true}); // Secure Socket.IO SSL Connection
 var menubar             = new gui.Menu({type:'menubar'});
 var file                = new gui.Menu();
@@ -81,9 +82,7 @@ optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 // Window bar
 
 //Fix for win8 Fullscreen bug; https://github.com/rogerwang/node-webkit/issues/1021
-if(process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
-    require('nw.gui').Window.get().setMaximumSize(screen.availWidth + 15, screen.availHeight + 15);
-}
+
 
 $('.windowBar .close').click(function() {
 	socket.disconnect();
@@ -112,11 +111,26 @@ $('#signInForm').submit(function() {
     gui.Window.open('application.html', {
         toolbar: false,
         frame: false,
+        focus: true,
         width: screenWidth,
         height: screenHeight,
         min_width: 600,
         min_height: 460,
         position: 'center'
+    });
+
+});
+
+//Window loaded
+win.on("loaded", function () {
+    viewUtil.getCurrentWindowFilename(window.location.pathname, function (filename) {
+        //Chat window loaded
+        if (filename == "application.html") {
+            //Fix for win8 Fullscreen bug; https://github.com/rogerwang/node-webkit/issues/1021
+            if (process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
+                gui.Window.get().setMaximumSize(screenWidth + 15, screen.availHeight + 15);
+            }
+        }
     });
 });
 
