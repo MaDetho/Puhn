@@ -1,6 +1,7 @@
 /**
  * View utility
  */
+var _ = require('underscore');
 
 /**
  * Callbacks the current filename of window
@@ -24,8 +25,12 @@ function getProfileContentHTMLbyUser(user) {
  * @param user Object
  */
 function getFriendlistContentHTMLbyUser(user) {
-    //TODO: get underscore.js, iterate throu user.friends
-    return '<ul><li class="active"><div class="avatar" data-status="online"><img src="../img/default_small.png" class="rounded"></div><h6>Martin <small>@MaDetho</small></h6></li><li><div class="avatar" data-status="busy"><img src="../img/default_small.png" class="rounded"></div><h6>Daniel <small>@loe</small></h6></li></ul>';
+    var html = '<ul>';
+    _.each(user.friends, function (friend) {
+        html += '<li><div class="avatar" data-status="' + friend.status + '"><img src="' + friend.avatar + '" class="rounded"></div><h6>' + friend.firstname + '<small>@' + friend.usr + '</small></h6></li>';
+    });
+    html += '</ul>';
+    return html;
 }
 
 exports.getCurrentWindowFilename = getCurrentWindowFilename;

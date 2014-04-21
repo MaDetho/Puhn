@@ -141,6 +141,7 @@ win.on("loaded", function () {
                 gui.Window.get().setMaximumSize(screenWidth + 15, screen.availHeight + 15);
             }
             
+            //Add Profile and Friendlist HTML
             $('#sidebar .profile').html(viewUtil.getProfileContentHTMLbyUser(global.user));
             $('#sidebar .friends').html(viewUtil.getFriendlistContentHTMLbyUser(global.user));
         }
