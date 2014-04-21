@@ -27,7 +27,7 @@ function getProfileContentHTMLbyUser(user) {
 function getFriendlistContentHTMLbyUser(user) {
     var html = '<ul>';
     _.each(user.friends, function (friend) {
-        html += '<li><div class="avatar" data-status="' + friend.status + '"><img src="' + friend.avatar + '" class="rounded"></div><h6>' + friend.firstname + '<small>@' + friend.usr + '</small></h6></li>';
+        html += '<li><div class="avatar" data-status="' + friend.status + '"><img src="' + friend.avatar + '" class="rounded"></div><h6>' + friend.firstname + ' <small>@' + friend.usr + '</small></h6></li>';
     });
     html += '</ul>';
     return html;
