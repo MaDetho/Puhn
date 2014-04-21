@@ -159,7 +159,7 @@ $('#createAnAccount').click(function() {
 });
 
 // Open options context menu at mouse position
-$('#optionsButton').click(function(e) {
+$('#sidebar .profile').on('click', '#optionsButton', function(e) {
 	optionMenu.popup(e.pageX, e.pageY);
 });
 
