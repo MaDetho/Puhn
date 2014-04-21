@@ -73,9 +73,33 @@ optionMenu.append(new gui.MenuItem({
 optionMenu.append(new gui.MenuItem({ label: 'Manage friends' }));
 optionMenu.append(new gui.MenuItem({ label: 'How-to guide' }));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Online', checked: true }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Away', checked: false }));
-optionMenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Busy', checked: false }));
+optionMenu.append(new gui.MenuItem({
+    type: 'checkbox',
+    label: 'Online',
+    tooltip: 'Set your status to Online',
+    checked: true,
+    click: function() {
+        this.checked = true;
+    }
+}));
+optionMenu.append(new gui.MenuItem({
+    type: 'checkbox',
+    label: 'Away',
+    tooltip: 'Set your status to Away',
+    checked: false,
+    click: function() {
+        this.checked = true;
+    }
+}));
+optionMenu.append(new gui.MenuItem({
+    type: 'checkbox',
+    label: 'Busy',
+    tooltip: 'Set your status to Busy',
+    checked: false,
+    click: function() {
+        this.checked = true;
+    }
+}));
 optionMenu.append(new gui.MenuItem({ type: 'separator' }));
 optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
