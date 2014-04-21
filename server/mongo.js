@@ -260,7 +260,7 @@ exports.addFriendProcess = function (username, friendusername, callback) {
  * @param {} callback
  * @return
  */
-exports.addFriendProcess = function (username, friendusername, callback) {
+exports.removeFriendProcess = function (username, friendusername, callback) {
     usernameExists(friendusername, function (exists) {
         if (exists) {
             getObjectIdbyUsername(friendusername, function (friendId) {
