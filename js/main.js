@@ -76,7 +76,6 @@ optionMenu.append(new gui.MenuItem({ type: 'separator' }));
 optionMenu.append(new gui.MenuItem({
     type: 'checkbox',
     label: 'Online',
-    tooltip: 'Set your status to Online',
     checked: true,
     click: function() {
         this.checked = true;
@@ -85,7 +84,6 @@ optionMenu.append(new gui.MenuItem({
 optionMenu.append(new gui.MenuItem({
     type: 'checkbox',
     label: 'Away',
-    tooltip: 'Set your status to Away',
     checked: false,
     click: function() {
         this.checked = true;
@@ -94,7 +92,6 @@ optionMenu.append(new gui.MenuItem({
 optionMenu.append(new gui.MenuItem({
     type: 'checkbox',
     label: 'Busy',
-    tooltip: 'Set your status to Busy',
     checked: false,
     click: function() {
         this.checked = true;
@@ -105,7 +102,6 @@ optionMenu.append(new gui.MenuItem({ label: 'Sign out' }));
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Window bar
-
 $('.windowBar .close').click(function() {
 	socket.disconnect();
     win.close();
@@ -185,6 +181,11 @@ $('#createAnAccount').click(function() {
 // Open options context menu at mouse position
 $('#sidebar .profile').on('click', '#optionsButton', function(e) {
 	optionMenu.popup(e.pageX, e.pageY);
+});
+
+// Alert the username on click
+$('#sidebar .friends').on('click', 'li', function() {
+    alert($(this).data('username'));
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
