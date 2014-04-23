@@ -116,6 +116,24 @@ function getObjectIdbyUsername(username, callback) {
 }
 
 /**
+ * Export Get objectId for user
+ * @method getObjectIdbyUsername
+ * @param {} username
+ * @param {} callback
+ * @return
+ */
+exports.exGetObjectIdbyUsername = function(username, callback) {
+    mongoUser.findOne({
+        usr: username
+    })
+        .select('_id')
+        .exec(function (err, user) {
+            if (err) return handleError(err);
+            callback(String(user._id));
+        });
+}
+
+/**
  * Check if User Exists
  * @method usernameExists
  * @param {} username
@@ -206,6 +224,24 @@ exports.getFullUserByUsername = function (username, callback) {
         .exec(function (err, user) {
             if (err) return handleError(err);
             callback(user);
+        });
+}
+
+/**
+ * get friendlist ids
+ * @method getFullUserByUsername
+ * @param {} username
+ * @param {user} callback
+ * @return
+ */
+exports.getFriendlistIds = function (username, callback) {
+    mongoUser.findOne({
+        usr: username
+    })
+        .select('friends')
+        .exec(function (err, friends) {
+            if (err) return handleError(err);
+            callback(friends);
         });
 }
 

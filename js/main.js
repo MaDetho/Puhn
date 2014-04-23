@@ -185,7 +185,10 @@ $('#sidebar .profile').on('click', '#optionsButton', function(e) {
 
 // Alert the username on click
 $('#sidebar .friends').on('click', 'li', function() {
-    alert($(this).data('username'));
+    var friendUsername = $(this).data('username');
+    socket.emit('open convo', friendUsername, function(message){
+        alert(message);
+    });
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
