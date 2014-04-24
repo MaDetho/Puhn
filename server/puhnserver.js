@@ -47,7 +47,7 @@ io.sockets.on('connection', function (socket) {
         });
     });
     
-    socket.on('open convo', function (friend, callback) {
+    socket.on('open convo', function (friend, channelId, callback) {
         mongo.getFriendlistIds(users[socket.id].usr, function (friendList) {
             mongo.exGetObjectIdbyUsername(friend, function (friendId) {
                 //If friend is really in friendlist
@@ -65,7 +65,7 @@ io.sockets.on('connection', function (socket) {
                         sockets[friendId].channels.push(id);
                         socket.join(id);
                         sockets[friendId].join(id);
-                        callback("YOU:" + users[socket.id]._id + " FRIEND:" + friendId + " joined Channel:" + id);
+                        callback(id);
                     } else {
                         //no socket found - hes offline?   
                         console.log(friend + " has NO socket");

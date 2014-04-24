@@ -16,6 +16,7 @@ var win                 = gui.Window.get();
 var screenWidth         = window.screen.availWidth;
 var screenHeight        = window.screen.availHeight;
 var retina              = window.devicePixelRatio > 1;
+var openedConvos        = {};
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Remember me
@@ -186,9 +187,15 @@ $('#sidebar .profile').on('click', '#optionsButton', function(e) {
 // Alert the username on click
 $('#sidebar .friends').on('click', 'li', function() {
     var friendUsername = $(this).data('username');
-    socket.emit('open convo', friendUsername, function(message){
-        alert(message);
-    });
+    //Check if Convo is opened
+    if (typeof openedConvos[friendUsername] == "undefined") {
+        socket.emit('open convo', friendUsername, "ID", function(channelId){
+            openedConvos[friendUsername] = channelId;
+            alert("CC Opene new tab with convo here :) ChannelId=" + channelId);
+        });
+    } else {
+        alert("Convo allready opened");   
+    }
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
